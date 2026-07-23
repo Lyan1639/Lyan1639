@@ -1,6 +1,6 @@
 +++
 date = '2026-07-23T15:10:20+08:00'
-draft = true
+draft = false
 title = 'First Note:一篇ai废话'
 +++
 ## 关于写一篇废话文字这件事的一些不成熟的想法与若干补充说明
