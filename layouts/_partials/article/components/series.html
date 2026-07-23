@@ -1,0 +1,49 @@
+{{- /*
+    系列文集导航组件
+    显示当前文章所属系列的所有文章列表
+*/ -}}
+{{- $seriesTerms := .GetTerms "series" -}}
+{{- if $seriesTerms -}}
+    {{- range $seriesTerms -}}
+        {{- $seriesName := .LinkTitle -}}
+        {{- $seriesPages := .Pages.ByDate -}}
+        {{- $currentPage := $ -}}
+        {{- $currentIndex := -1 -}}
+        {{- range $i, $p := $seriesPages -}}
+            {{- if eq $p.RelPermalink $currentPage.RelPermalink -}}
+                {{- $currentIndex = $i -}}
+            {{- end -}}
+        {{- end -}}
+
+        <aside class="article-series">
+            <div class="article-series-header">
+                <svg class="series-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+                <h3 class="series-title">系列文章：<span class="series-name">{{ $seriesName }}</span></h3>
+            </div>
+
+            <ol class="article-series-list">
+                {{- range $i, $p := $seriesPages -}}
+                <li class="{{ if eq $i $currentIndex }}active{{ end }}">
+                    <span class="series-index">{{ add $i 1 }}</span>
+                    <a href="{{ $p.RelPermalink }}" class="series-link">{{ $p.Title }}</a>
+                    <span class="series-status">
+                        {{- if eq $i $currentIndex -}}
+                            当前
+                        {{- else if eq $i (sub (len $seriesPages) 1) -}}
+                            最新
+                        {{- end -}}
+                    </span>
+                </li>
+                {{- end -}}
+            </ol>
+
+            <div class="series-footer">
+                <a href="/series/" class="series-all-link">查看全部系列 →</a>
+                <span class="series-count">{{ len $seriesPages }} 篇</span>
+            </div>
+        </aside>
+    {{- end -}}
+{{- end -}}

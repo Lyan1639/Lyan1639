@@ -1,0 +1,15 @@
+{{ $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) }}
+<article class="compact-item">
+    <div class="compact-meta">
+        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "01-02" }}</time>
+        {{ with .Params.tags }}
+            {{ range . }}
+            <span class="compact-tag tag-{{ . | urlize }}">{{ . }}</span>
+            {{ end }}
+        {{ end }}
+    </div>
+    <a href="{{ .RelPermalink }}" class="compact-title">{{ .Title }}</a>
+    {{ with .Description }}
+    <div class="compact-excerpt">{{ . | truncate 100 }}</div>
+    {{ end }}
+</article>

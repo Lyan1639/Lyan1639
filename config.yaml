@@ -1,14 +1,32 @@
 # ↓↓↓ 上线后必须改成你的真实地址！本地预览阶段先保持这样也行 ↓↓↓
 baseURL: "https://Lyan1639.github.io/"
-languageCode: "zh-cn"
-locale: "zh-cn"                # Hugo v0.158+ 用 locale，不加会有 languageCode 弃用警告（仅警告，不影响运行）
+locale: "zh-cn"
 theme: "hugo-theme-stack"
-title: "Lyan"          # 网站标题，改成你的
-copyright: "© 2026 liuyan"   # 底部版权
+title: "Lyan"                  # 网站标题，改成你的
+copyright: "© 2026 liuyan"     # 底部版权
+
+# 自定义分类法
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
 
 # 分页：每页显示几篇文章
 pagination:
   pagerSize: 5
+
+# 相关文章推荐配置（按标签权重匹配）
+related:
+  includeNewer: true
+  indices:
+    - name: tags
+      weight: 80
+    - name: keywords
+      weight: 50
+    - name: date
+      weight: 10
+  threshold: 1
+  toLower: false
 
 # Stack 主题的核心配置
 params:
@@ -18,13 +36,20 @@ params:
   # 左侧个人信息卡片
   sidebar:
     subtitle: "记录、分享、成长"   # 头像下的一句话简介
-                                 # 头像：直接写字符串路径，对应 assets/img/avatar.png
-                                 # （不想用头像就删掉这一行）
+    avatar: img/avatar.svg       # 头像 SVG
 
   # 文章封面等图片处理
   article:
     math: false
     toc: true                    # 文章内显示目录
+    readingTime: true            # 显示阅读时长
+    list:
+      showTags: true             # 列表页显示标签
+
+  # 右侧小部件
+  widgets:
+    page:
+      - type: toc                # 文章页右侧显示目录
 
   # 评论：先关掉，玩熟了再看第十一节接入 giscus
   comments:
@@ -39,7 +64,25 @@ menu:
       params:
         icon: brand-github
 
-  main: []                       # 主菜单，先留空
+  main:                          # 主菜单（DeepSeek 风格）
+    - identifier: home
+      name: 首页
+      url: /
+      weight: 1
+      params:
+        icon: home
+    - identifier: series
+      name: 系列文集
+      url: /series/
+      weight: 2
+      params:
+        icon: hash
+    - identifier: bookmarks
+      name: 我的收藏
+      url: /page/bookmarks/
+      weight: 3
+      params:
+        icon: tag
 
 # 让文章摘要、代码高亮等更好看
 markup:

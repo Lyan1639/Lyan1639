@@ -1,0 +1,42 @@
+{{- /* 系列文章列表页 /series/<name>/ - 卡片风格 */ -}}
+{{ define "main" }}
+    <header>
+        <h3 class="section-title">
+            <a href="/series/" class="link">系列文集</a> / {{ .Title }}
+        </h3>
+
+        <div class="section-card">
+            <div class="section-details">
+                <h3 class="section-count">{{ T "list.page" (len .Pages) }}</h3>
+                <h1 class="section-term">{{ .Title }}</h1>
+                {{ with .Params.description }}
+                    <h2 class="section-description">{{ . }}</h2>
+                {{ end }}
+            </div>
+        </div>
+    </header>
+
+    {{ $paginator := .Paginate .Pages }}
+    {{ with $paginator }}
+        <section class="article-list series-card-list">
+            {{ range .Pages }}
+                <article>
+                    {{ partial "article/components/header" (dict "Page" . "IsList" true) }}
+                    {{ with .Description }}
+                    <div class="article-excerpt">{{ . | markdownify }}</div>
+                    {{ else }}
+                    <div class="article-excerpt">{{ .Summary | truncate 150 }}</div>
+                    {{ end }}
+                </article>
+            {{ end }}
+        </section>
+    {{ end }}
+
+    {{ partial "pagination.html" . }}
+
+    {{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

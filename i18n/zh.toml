@@ -1,0 +1,32 @@
+# 自定义翻译覆盖
+# 覆盖主题中的相关翻译
+
+[article]
+relatedContent = "你可能也喜欢"
+
+# 以下键由 custom.ts 使用，注入到页面中的中文文本
+[article_custom]
+series = "系列文章"
+bookmark = "收藏"
+bookmarked = "已收藏"
+addToCollection = "加入收藏夹"
+newCollection = "新建收藏夹"
+collectionName = "收藏夹名称"
+confirm = "确定"
+cancel = "取消"
+delete = "删除"
+noCollections = "暂无收藏夹，点击上方按钮新建"
+readingProgress = "继续阅读"
+readingProgressRestore = "已为您恢复到上次阅读位置"
+backToTop = "回到顶部"
+fontSize = "字号"
+fontSizeSmall = "小"
+fontSizeNormal = "中"
+fontSizeLarge = "大"
+revisionPrefix = "本文上次更新于"
+revisionJustNow = "刚刚"
+revisionMinutesAgo = "{{ .Count }} 分钟前"
+revisionHoursAgo = "{{ .Count }} 小时前"
+revisionDaysAgo = "{{ .Count }} 天前"
+revisionMonthsAgo = "{{ .Count }} 个月前"
+revisionYearsAgo = "{{ .Count }} 年前"

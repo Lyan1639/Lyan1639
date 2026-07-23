@@ -1,0 +1,16 @@
+{{ define "body-class" }}page-bookmarks{{ end }}
+
+{{ define "main" }}
+<article class="main-article page-bookmarks">
+    <div class="bookmarks-header">
+        <div class="bookmarks-header-left">
+            <h1 class="bookmarks-title">{{ .Title }}</h1>
+            <p class="bookmarks-subtitle">{{ .Description }}</p>
+        </div>
+    </div>
+
+    <div class="bookmarks-content" id="lyan-bookmarks-app">
+        <!-- 由 JS 渲染 -->
+    </div>
+</article>
+{{ end }}

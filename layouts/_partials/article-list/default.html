@@ -1,0 +1,9 @@
+{{ $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) }}
+<article class="{{ if $image }}has-image{{ end }}">
+    {{ partial "article/components/header" (dict "Page" . "IsList" true) }}
+    {{ with .Description }}
+    <div class="article-excerpt">{{ . | markdownify }}</div>
+    {{ else }}
+    <div class="article-excerpt">{{ .Summary | truncate 150 }}</div>
+    {{ end }}
+</article>
