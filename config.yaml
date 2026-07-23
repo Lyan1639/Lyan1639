@@ -1,0 +1,50 @@
+# ↓↓↓ 上线后必须改成你的真实地址！本地预览阶段先保持这样也行 ↓↓↓
+baseURL: "https://Lyan1639.github.io/"
+languageCode: "zh-cn"
+locale: "zh-cn"                # Hugo v0.158+ 用 locale，不加会有 languageCode 弃用警告（仅警告，不影响运行）
+theme: "hugo-theme-stack"
+title: "Lyan"          # 网站标题，改成你的
+copyright: "© 2026 liuyan"   # 底部版权
+
+# 分页：每页显示几篇文章
+pagination:
+  pagerSize: 5
+
+# Stack 主题的核心配置
+params:
+  mainSections:
+    - post                     # 首页展示 content/post 目录下的文章
+
+  # 左侧个人信息卡片
+  sidebar:
+    subtitle: "记录、分享、成长"   # 头像下的一句话简介
+                                 # 头像：直接写字符串路径，对应 assets/img/avatar.png
+                                 # （不想用头像就删掉这一行）
+
+  # 文章封面等图片处理
+  article:
+    math: false
+    toc: true                    # 文章内显示目录
+
+  # 评论：先关掉，玩熟了再看第十一节接入 giscus
+  comments:
+    enabled: false
+
+# 顶部/侧边菜单
+menu:
+  social:                        # 社交链接（显示在个人卡片下）
+    - identifier: github
+      name: GitHub
+      url: "https://github.com/Lyan1639"
+      params:
+        icon: brand-github
+
+  main: []                       # 主菜单，先留空
+
+# 让文章摘要、代码高亮等更好看
+markup:
+  goldmark:
+    renderer:
+      unsafe: true               # 允许 Markdown 里写 HTML
+  highlight:
+    noClasses: false
