@@ -755,7 +755,7 @@ function initSimpleBookmarks(app: HTMLElement) {
 // 主页搜索 + 布局切换
 // ============================================
 function initHomeSearch() {
-    if (window.location.pathname !== '/') return;
+    if (document.documentElement.dataset.page !== 'home') return;
     const main = document.querySelector('.main');
     const firstChild = main?.firstElementChild;
     if (!main) return;
@@ -818,7 +818,7 @@ function initHomeSearch() {
 // 标签筛选（点击标签切换）
 // ============================================
 function initTagFilter() {
-    if (window.location.pathname !== '/') return;
+    if (document.documentElement.dataset.page !== 'home') return;
 
     // 拦截标签链接点击 → 转为筛选
     document.querySelectorAll('.article-tags a').forEach(a => {
@@ -970,7 +970,7 @@ function initWelcomeToast() {
 // 主页文章列表显示阅读量和点赞
 // ============================================
 function initListCounts() {
-    if (window.location.pathname !== '/') return;
+    if (document.documentElement.dataset.page !== 'home') return;
     let views: Record<string, number> = {};
     let likes: Record<string, number> = {};
     try { views = JSON.parse(localStorage.getItem('lyan_blog_views') || '{}'); } catch {}
@@ -999,7 +999,7 @@ function initListCounts() {
 // 主页文章列表分享按钮
 // ============================================
 function initListShareButtons() {
-    if (window.location.pathname !== '/') return;
+    if (document.documentElement.dataset.page !== 'home') return;
     document.querySelectorAll('.article-list article').forEach(card => {
         const title = card.querySelector('.article-title a')?.textContent?.trim() || '';
         const href = card.querySelector('.article-title a')?.getAttribute('href') || '/';
@@ -1031,7 +1031,7 @@ function initListShareButtons() {
 // 主页留言板（QQ空间弹幕 · 从右向左飘过）
 // ============================================
 function initHomeMessageBoard() {
-    if (window.location.pathname !== '/') return;
+    if (document.documentElement.dataset.page !== 'home') return;
     const toolbar = document.querySelector('.home-toolbar');
     if (!toolbar) return;
 
